@@ -12,7 +12,6 @@ export default function AddComment({ profile, id }) {
     const dispatch = useDispatch();
 
     const submit = (e) => {
-
         if (e.keyCode === 13) {
             e.preventDefault();
             dispatch(comments.post(commentRequest));
@@ -22,7 +21,7 @@ export default function AddComment({ profile, id }) {
 
     }
 
-   return (
+    return (
         <form className='comment_form'>
 
             <div className="profile_user">

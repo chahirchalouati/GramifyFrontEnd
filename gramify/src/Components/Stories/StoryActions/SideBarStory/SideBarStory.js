@@ -6,12 +6,7 @@ import Divider from '../../../Divider/Divider'
 
 function SideBarStory({ textEditor, setContent, submit, setImageUrl }) {
 
-
-
-
-
-
-    const { RX_SIGN_IN: { payload }, RX_STORY: { assets } } = useSelector(state => state);
+ const { RX_SIGN_IN: { payload }, RX_STORY: { assets } } = useSelector(state => state);
     return (
         <div className='side_bar_story'>
             <div className="side_bar_story_header">

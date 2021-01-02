@@ -12,13 +12,13 @@ const dividerStyle = { width: '95%', margin: '5px auto', borderTopColor: 'rgb(22
 
 
 
-export default function PostFooter({ like  , addLike, reactions, showReaction, comments, openComment, setOpenComment, setShowReaction, onLike, id }) {
+export default function PostFooter({ like, addLike, reactions, showReaction, comments, openComment, setOpenComment, setShowReaction, onLike, id }) {
     return (
         <div className="post_footer">
 
             <div className="post_footer_header">
                 {showReaction && <ReactionForm />}
-                <Reaction reactions={reactions} setLike={addLike} ></Reaction>
+                <Reaction reactions={reactions} setLike={addLike} idPost={id} ></Reaction>
                 <div className="comments_number">{comments != null ? comments.length : 0} comments</div>
             </div>
 

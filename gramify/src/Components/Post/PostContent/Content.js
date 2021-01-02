@@ -4,7 +4,7 @@ export default function Content({ content }) {
 
     const [readMore, setReadMore] = useState(false);
 
-    if (content.length > 0) {
+    if (content && content.length > 0) {
 
         if (content.length > 200) {
             return <div className="content">

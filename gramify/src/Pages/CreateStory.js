@@ -42,14 +42,16 @@ function CreateStory() {
         if (story.file) {
             formData.append("file", story.file);
             dispatch(stories.post(formData))
+            history.push("/home");
         }
         if (story.content != null || undefined) {
             formData.append('content', story.content);
             formData.append('imageUrl', story.imageUrl)
-            dispatch(stories.post(formData))
+            dispatch(stories.post(formData));
+            history.push("/home");
         }
 
-        history.push("/home");
+
 
     }
 

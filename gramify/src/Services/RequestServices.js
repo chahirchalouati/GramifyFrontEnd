@@ -96,14 +96,30 @@ export const posts = {
     delete: (id) => { },
     update: (payload, id) => { },
     getOne: (id) => { },
-    getAll: () => {
+    getAll: (nextPage) => {
         return async (dispatch) => {
             dispatch({ type: POST_TYPES.GET_POST_START });
             try {
-                const { data } = await client.get("/posts");
+                const { data } = await client.get("/posts?nextPage=" + nextPage);
                 dispatch({ type: POST_TYPES.GET_POST_SUCCESS, payload: data });
             } catch (e) {
                 dispatch({ type: POST_TYPES.GET_POST_FAILED, payload: e.response });
+            }
+        };
+    },
+    getNewPost: (nextPage) => {
+        return async (dispatch) => {
+            dispatch({ type: POST_TYPES.GET_NEW_POST_START });
+            try {
+                if (nextPage !== false) {
+                    const { data } = await client.get("/posts?nextPage=" + nextPage);
+                    dispatch({ type: POST_TYPES.GET_NEW_POST_SUCCESS, payload: data });
+                } else {
+                    return
+                }
+
+            } catch (e) {
+                dispatch({ type: POST_TYPES.GET_NEW_POST_FAILED, payload: e.response });
             }
         };
     },

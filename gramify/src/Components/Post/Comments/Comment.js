@@ -3,10 +3,6 @@ import React from 'react'
 
 export default function Comment({ comment: { post, user, id, createdAt, content } }) {
 
-
-
-
-
     return (
         <div className='comment'>
             <div className="comment_header">

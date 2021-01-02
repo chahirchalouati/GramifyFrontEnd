@@ -8,7 +8,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["RX_SIGN_IN"], // which reducer want to store
+  whitelist: ["RX_SIGN_IN","RX_POST","RX_STORY","RX_COMMENT"], // which reducer want to store
   transforms: [
     encryptTransform({
       secretKey:

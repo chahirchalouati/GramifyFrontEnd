@@ -13,6 +13,7 @@ import { accessType, getAsstes, posts, stories } from "../Services/RequestServic
 
 
 export default function Home() {
+
     const { RX_SIGN_IN, RX_POST, } = useSelector(state => state)
 
     const [gate, setGate] = useState({ openModalPost: false })
@@ -20,12 +21,16 @@ export default function Home() {
     const openModalPost = () => setGate({ ...gate, openModalPost: !gate.openModalPost })
 
 
+    const [isBottom, setIsBottom] = useState(false);
+
+
+
     useEffect(() => {
         if (!RX_SIGN_IN.profile_hasSuccess) {
             history.push("/profile")
         } else {
             dispatch(accessType.getAll());
-            dispatch(posts.getAll());
+            dispatch(posts.getAll(RX_POST.nextPage || 0));
             dispatch(stories.getAll());
             dispatch(getAsstes.getAll());
         }
@@ -33,6 +38,27 @@ export default function Home() {
 
     }, [RX_SIGN_IN.profile_hasSuccess, dispatch])
 
+    function handleScroll() {
+
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+
+        if (scrollTop + window.innerHeight + 50 >= scrollHeight) {
+            setIsBottom(true);
+        } else {
+            setIsBottom(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+
+    useEffect(() => {
+        (isBottom && !RX_POST.isLast) && dispatch(posts.getNewPost(RX_POST.nextPage));
+    }, [isBottom, RX_POST.nextPage, RX_POST.isLast])
 
 
     return (
