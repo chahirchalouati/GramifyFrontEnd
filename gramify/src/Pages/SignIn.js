@@ -15,15 +15,6 @@ const SignIn = () => {
 
   const {RX_SIGN_IN,RX_SIGN_UP} = useSelector((state) => state); 
 
-  
-/*
-  useEffect(() => {
-     RX_SIGN_IN.isAuthenticated  && !RX_SIGN_IN.profile_hasSuccess&& history.push("/profile")
-     RX_SIGN_IN.isAuthenticated &&RX_SIGN_IN.profile_hasSuccess&& history.push('/home')
-
-  }, [ RX_SIGN_IN.isAuthenticated, RX_SIGN_IN.profile_hasSuccess])
-*/
-
   const submit = (data) => {
     dispatch(authentifications.signIn(data))
   }   

@@ -11,10 +11,10 @@ export default function Post({ post }) {
     const [showReaction, setShowReaction] = useState(false);
     const [like, setLike] = useState(false);
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
 
     const onLike = () => {
-        dispatch(likes.post(id));
+        dispatch(likes.postLike(id));
     };
 
     const addLike = (bool) => {

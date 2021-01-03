@@ -2,7 +2,6 @@ import { COMMENT_TYPES, LIKE_TYPES, POST_TYPES } from "../Types";
 
 const initialState = {
   posts: [],
-
   nextPage: 0,
   isLast: false,
   create_post_start: false,
@@ -66,6 +65,8 @@ const RX_POST = (state = initialState, { type, payload }) => {
         get_post_failed: false,
       };
     case POST_TYPES.GET_POST_SUCCESS:
+
+
       return {
         ...state,
         get_post_start: false,
@@ -73,7 +74,7 @@ const RX_POST = (state = initialState, { type, payload }) => {
         get_post_failed: false,
         posts: payload.content,
         isLast: payload.last,
-        nextPage: !payload.last && state.nextPage + 1,
+        nextPage: !payload.last ? state.nextPage + 1 : false,
       };
     case POST_TYPES.GET_POST_FAILED:
       return {
@@ -90,9 +91,11 @@ const RX_POST = (state = initialState, { type, payload }) => {
         get_new_post_start: true,
         get_new_post_success: false,
         get_new_post_failed: false,
-      
+
       };
     case POST_TYPES.GET_NEW_POST_SUCCESS:
+
+      console.log(state.nextPage);
       return {
         ...state,
         get_new_post_start: false,
@@ -100,7 +103,7 @@ const RX_POST = (state = initialState, { type, payload }) => {
         get_new_post_failed: false,
         posts: [...state.posts, ...payload.content],
         isLast: payload.last,
-        nextPage: !payload.last && state.nextPage + 1,
+        nextPage: !payload.last ? state.nextPage + 1 : false,
       };
     case POST_TYPES.GET_NEW_POST_FAILED:
       return {
@@ -110,24 +113,6 @@ const RX_POST = (state = initialState, { type, payload }) => {
         get_new_post_failed: true,
         errorMessage: payload,
       };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     case COMMENT_TYPES.CREATE_COMMENT_START:
       return {
         ...state,

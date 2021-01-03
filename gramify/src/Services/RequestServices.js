@@ -224,11 +224,47 @@ export const stories = {
 // likes request
 export const likes = {
     get: (id) => { },
-    post: (payload) => {
+    postLike: (payload) => {
         return async (dispatch) => {
             dispatch({ type: LIKE_TYPES.CREATE_LIKE_START });
             try {
-                const { data } = await client.post("/likes", payload);
+                const { data } = await client.post("/likes/like", payload);
+
+                dispatch({
+                    type: LIKE_TYPES.CREATE_LIKE_SUCCESS,
+                    payload: data,
+                });
+            } catch (e) {
+                dispatch({
+                    type: LIKE_TYPES.CREATE_LIKE_FAILED,
+                    payload: e.response,
+                });
+            }
+        };
+    },
+    postLove: (payload) => {
+        return async (dispatch) => {
+            dispatch({ type: LIKE_TYPES.CREATE_LIKE_START });
+            try {
+                const { data } = await client.post("/likes/love", payload);
+
+                dispatch({
+                    type: LIKE_TYPES.CREATE_LIKE_SUCCESS,
+                    payload: data,
+                });
+            } catch (e) {
+                dispatch({
+                    type: LIKE_TYPES.CREATE_LIKE_FAILED,
+                    payload: e.response,
+                });
+            }
+        };
+    },
+    postHate: (payload) => {
+        return async (dispatch) => {
+            dispatch({ type: LIKE_TYPES.CREATE_LIKE_START });
+            try {
+                const { data } = await client.post("/likes/hate", payload);
 
                 dispatch({
                     type: LIKE_TYPES.CREATE_LIKE_SUCCESS,

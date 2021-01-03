@@ -10,7 +10,7 @@ export default function Content({ content }) {
             return <div className="content">
                 {readMore ? content : content.substr(0, 300)}
                 <span style={{ fontWeight: 'bold', cursor: 'pointer' }}
-                    onClick={e => setReadMore(!readMore)}>{readMore ? ' See less' : ' See more '}</span>
+                    onClick={e => setReadMore(!readMore)}>{readMore ? ' SeeLess' : ' ...SeeMore '}</span>
             </div>
         } else {
             return <div className="content">{content}</div>

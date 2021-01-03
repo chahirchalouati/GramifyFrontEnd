@@ -12,6 +12,8 @@ export default function Reaction({ reactions, idPost, setLike }) {
     const isHated = reactions.find(r => r.isHated === true || false);
     const isLoved = reactions.find(r => r.isLoved === true || false);
 
+    const filtredReactions = reactions.filter(r=>  r.isLiked === true ||  r.isHated === true  || r.isLoved === true );
+
     const currentUserReaction = reactions.find(r => r.user.id === payload.user.id) || false;
 
     useEffect(() => {
@@ -25,10 +27,11 @@ export default function Reaction({ reactions, idPost, setLike }) {
         return <div className="reaction_icons">
             <div className="r_icons" style={{ width: 'max-content' }}>
                 {isLiked && <div className="i_icon"><AiFillLike size={22} fill={'rgb(14, 101, 222)'} /></div>}
-                {isHated && <div className="i_icon"><FcLike size={22}></FcLike></div>}
-                {isLoved && <div className="i_icon"><FaSmileBeam size={22} fill={'orange'} /></div>}
+                {isLoved && <div className="i_icon"><FcLike size={22}></FcLike></div>}
+                {isHated && <div className="i_icon"><FaSmileBeam size={22} fill={'orange'} /></div>}
             </div>
-            {currentUserReaction.isLiked && <div className="r_icons_text">You {reactions.length > 1 && "and " + reactions.length + " others"}</div>}
+            {!currentUserReaction.isLiked && <div className="r_icons_text">{(filtredReactions.length) + " others"}</div>}
+            {currentUserReaction.isLiked && <div className="r_icons_text">You {reactions.length > 1 && "and " + (reactions.length - 1) + " others"}</div>}
         </div>;
     } else {
         return <></>

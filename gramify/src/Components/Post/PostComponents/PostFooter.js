@@ -17,7 +17,7 @@ export default function PostFooter({ like, addLike, reactions, showReaction, com
         <div className="post_footer">
 
             <div className="post_footer_header">
-                {showReaction && <ReactionForm />}
+                {showReaction && <ReactionForm id={id} />}
                 <Reaction reactions={reactions} setLike={addLike} idPost={id} ></Reaction>
                 <div className="comments_number">{comments != null ? comments.length : 0} comments</div>
             </div>
