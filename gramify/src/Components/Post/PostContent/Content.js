@@ -19,7 +19,12 @@ export default function Content({ content }) {
 
 
     }
-    return (<></>)
+    else if (content.length <= 0 || content === null) {
+        return (<></>)
+
+
+    }
+
 
 
 }

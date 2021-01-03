@@ -25,7 +25,7 @@ function PostList() {
         const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
 
-        if (scrollTop + window.innerHeight + 50 >= scrollHeight) {
+        if (scrollTop + window.innerHeight + 100 >= scrollHeight) {
             setIsBottom(true);
         } else {
             setIsBottom(false);

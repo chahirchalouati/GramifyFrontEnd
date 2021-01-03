@@ -1,8 +1,10 @@
-import { COMMENT_TYPES, LIKE_TYPES, POST_TYPES } from "../Types";
+
+import { COMMENT_TYPES, LIKE_TYPES, POST_TYPES, REPLY_TYPES } from "../Types";
 
 const initialState = {
   posts: [],
   nextPage: 0,
+
   isLast: false,
   create_post_start: false,
   create_post_success: false,
@@ -24,10 +26,13 @@ const initialState = {
   create_comment_success: false,
   create_comment_failed: false,
 
-
   get_new_post_start: false,
   get_new_post_success: false,
   get_new_post_failed: false,
+
+  create_reply_start: false,
+  create_reply_success: false,
+  create_reply_failed: false,
 
   errorMessage: {},
 };
@@ -163,6 +168,56 @@ const RX_POST = (state = initialState, { type, payload }) => {
         ...state,
         errorMessage: payload,
       };
+
+    case REPLY_TYPES.CREATE_REPLY_START:
+      return {
+        ...state,
+        create_reply_start: true,
+        create_reply_success: false,
+        create_reply_failed: false,
+
+      }
+
+    case REPLY_TYPES.CREATE_REPLY_SUCCESS:
+
+
+      state.posts.find(p => p.id === payload.idPost).comments.find(c => c.id === payload.idComment).replies.unshift(payload)
+
+
+      return {
+        ...state,
+        create_reply_start: false,
+        create_reply_success: true,
+        create_reply_failed: false,
+
+      }
+
+    case REPLY_TYPES.CREATE_REPLY_FAILED:
+      return {
+        ...state,
+        create_reply_start: false,
+        create_reply_success: false,
+        create_reply_failed: true,
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     default:
       return state;

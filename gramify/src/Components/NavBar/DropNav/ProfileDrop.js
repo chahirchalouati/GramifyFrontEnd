@@ -29,7 +29,7 @@ export default function ProfileDrop({ user, ...props }) {
             </div>
             <Divider style={{ width: '95%', margin: '10px auto', borderTopColor: 'rgb(228, 230, 235)', borderWidth: '2px' }}></Divider>
             <div className="item-nav" onClick={(e) => { }}>
-                <div className="icon_nav">
+                <div className="icon_nav_profile">
                     <AiFillExclamationCircle size="25"></AiFillExclamationCircle>
                 </div>
         Give feedback
@@ -37,28 +37,28 @@ export default function ProfileDrop({ user, ...props }) {
             </div>
             <Divider style={{ width: '95%', margin: '10px auto', borderTopColor: 'rgb(228, 230, 235)', borderWidth: '2px' }}></Divider>
             <div className="item-nav" onClick={(e) => { }}>
-                <div className="icon_nav">
+                <div className="icon_nav_profile">
                     <FiSettings size="25" />
                 </div>
                 <>Settings & privacy</>
                 <FiChevronRight style={{ marginLeft: "auto" }} />
             </div>
             <div className="item-nav" onClick={(e) => { }}>
-                <div className="icon_nav">
+                <div className="icon_nav_profile">
                     <AiFillQuestionCircle size="25"></AiFillQuestionCircle>
                 </div>
         Help & support
                 <FiChevronRight style={{ marginLeft: "auto" }}></FiChevronRight>
             </div>
             <div className="item-nav" onClick={(e) => { }}>
-                <div className="icon_nav">
+                <div className="icon_nav_profile">
                     <FaMoon size="25"></FaMoon>
                 </div>
         Display preferences
                 <FiChevronRight style={{ marginLeft: "auto" }}></FiChevronRight>
             </div>
             <div className="item-nav" onClick={(e) => { dispatch(authentifications.logOut()) }}>
-                <div className="icon_nav">
+                <div className="icon_nav_profile">
                     <BiLogOutCircle size="25"></BiLogOutCircle>
                 </div>
         Log Out

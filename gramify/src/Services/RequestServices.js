@@ -7,6 +7,7 @@ import {
     PROFILE_TYPES,
     STORY_TYPES,
     LIKE_TYPES,
+    REPLY_TYPES,
 } from "../Redux/Types";
 import { tokenStore } from "./TokenService";
 
@@ -115,9 +116,8 @@ export const posts = {
                     const { data } = await client.get("/posts?nextPage=" + nextPage);
                     dispatch({ type: POST_TYPES.GET_NEW_POST_SUCCESS, payload: data });
                 } else {
-                    return
+                    return;
                 }
-
             } catch (e) {
                 dispatch({ type: POST_TYPES.GET_NEW_POST_FAILED, payload: e.response });
             }
@@ -305,6 +305,21 @@ export const getAsstes = {
                 dispatch({ type: STORY_TYPES.GET_ASSETS_STORY_SUCCESS, payload: data });
             } catch (e) {
                 dispatch({ type: STORY_TYPES.GET_ASSETS_STORY_FAILED });
+            }
+        };
+    },
+};
+// reply actions
+export const replies = {
+    post: (payload) => {
+        return async (dispatch) => {
+            dispatch({ type: REPLY_TYPES.CREATE_REPLY_START });
+            try {
+                const { data } = await client.post("/replies", payload);
+
+                dispatch({ type: REPLY_TYPES.CREATE_REPLY_SUCCESS, payload: data });
+            } catch (e) {
+                dispatch({ type: REPLY_TYPES.CREATE_REPLY_FAILED });
             }
         };
     },

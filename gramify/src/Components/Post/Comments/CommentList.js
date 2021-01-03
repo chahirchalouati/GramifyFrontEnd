@@ -10,9 +10,7 @@ export default function CommentList({ postID, comments }) {
         <div className="comment_list">
             <AddComment profile={RX_SIGN_IN.payload.user} id={postID}></AddComment>
 
-            {comments.length <= 0 && (
-                <p style={{ margin: "0px auto" }}>No Comment found </p>
-            )}
+
             {comments.map((c) => (
                 <Comment key={c.id} comment={c} />
             ))}
