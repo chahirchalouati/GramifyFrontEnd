@@ -19,9 +19,9 @@ const App = (props) => {
                     <Switch>
                     <Route exact path="/" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
-                    <PrivateRoute path="/home" component={Home}></PrivateRoute>
-                    <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
-                    <PrivateRoute path="/create/story" component={CreateStory}></PrivateRoute>
+                    <PrivateRoute exact path="/home" component={Home}></PrivateRoute>
+                    <PrivateRoute exact path="/profile" component={Profile}></PrivateRoute>
+                    <PrivateRoute exact path="/create/story" component={CreateStory}></PrivateRoute>
             
                     <Route path="*" component={ErrorPage} />
                     </Switch>

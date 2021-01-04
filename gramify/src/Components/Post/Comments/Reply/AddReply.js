@@ -27,17 +27,18 @@ export default function AddReply({ id }) {
     const submit = (e) => {
         if (e.keyCode === 13) {
             e.preventDefault();
-            dispatch(replies.post(reply));
-            e.currentTarget.textContent = '';
-
+            if (reply.content.length > 0) {
+                dispatch(replies.post(reply));
+                e.currentTarget.textContent = '';
+                setReply({ ...reply, content: '' })
+            }
         }
-
     }
 
     return (
-        <form className='comment_form' style={{ marginTop: '5px' }}>
-            <div className="profile_user">
-                <img src={process.env.REACT_APP_API_URL + user.profile.avatarFile.url} alt={user.profile.avatarFile.name} />
+        <form className='comment_form' style={{ marginTop: '5px', width: '95%', marginLeft: 'auto' }}>
+            <div className="profile_user" style={{ width: '2em', height: '2em' }}>
+                <img style={{ width: '2em', height: '2em' }} src={process.env.REACT_APP_API_URL + user.profile.avatarFile.url} alt={user.profile.avatarFile.name} />
             </div>
 
             <span data-placeholder="make a reply ..." className='span_textArea'

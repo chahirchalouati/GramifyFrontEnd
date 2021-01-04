@@ -18,7 +18,7 @@ export default function Post({ post }) {
     };
 
     const addLike = (bool) => {
-        return setLike(bool);
+        return setLike(b=>bool);
     };
 
     return (

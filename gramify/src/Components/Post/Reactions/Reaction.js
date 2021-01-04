@@ -18,18 +18,18 @@ export default function Reaction({ reactions, idPost, setLike }) {
 
     useEffect(() => {
         currentUserReaction && setLike(currentUserReaction.isLiked);
-    }, [currentUserReaction, setLike]); 
-    
+    }, [currentUserReaction, setLike]);
 
-     if (reactions) {
+
+    if (reactions) {
         return <div className="reaction_icons">
             <div className="r_icons" style={{ width: 'max-content' }}>
                 {isLiked && <div className="i_icon"><AiFillLike size={22} fill={'rgb(14, 101, 222)'} /></div>}
                 {isLoved && <div className="i_icon"><FcLike size={22}></FcLike></div>}
                 {isHated && <div className="i_icon"><FaSmileBeam size={22} fill={'orange'} /></div>}
             </div>
-            {!currentUserReaction.isLiked && <div className="r_icons_text">{filtredReactions.length > 0 && filtredReactions.length + " others"}</div>}
-            {currentUserReaction.isLiked && <div className="r_icons_text">{reactions.length > 1 && " " + (reactions.length - 1) + " others"}</div>}
+            {!currentUserReaction.isLiked && <div className="r_icons_text">{filtredReactions.length > 0 && filtredReactions.length + ""}</div>}
+            {currentUserReaction.isLiked && <div className="r_icons_text">{reactions.length > 1 && " " + (reactions.length - 1) + ""}</div>}
         </div>;
     } else {
         return <></>

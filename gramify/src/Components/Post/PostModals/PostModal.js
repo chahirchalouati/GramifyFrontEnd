@@ -36,6 +36,19 @@ function PostModal({ user, open }) {
         })
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     const { files, content } = request;
     useEffect(() => {
         const isDisabled = () => {

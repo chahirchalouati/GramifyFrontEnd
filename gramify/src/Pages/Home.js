@@ -6,7 +6,9 @@ import CreatePost from '../Components/Post/CreatePost';
 import PostList from '../Components/Post/PostList';
 import PostModal from '../Components/Post/PostModals/PostModal';
 import StoryList from '../Components/Stories/StoryList';
+import MessageContainer from "../Components/Messaging/MessageContainer";
 import { accessType, getAsstes, stories } from '../Services/RequestServices';
+
 
 export default function Home() {
 
@@ -27,10 +29,6 @@ export default function Home() {
 
     }, [dispatch])
 
-
-
-
-
     if (!RX_SIGN_IN.profile_hasSuccess) {
         return <Redirect to='/profile'></Redirect>;
     }
@@ -43,6 +41,9 @@ export default function Home() {
                 {  RX_STORY.get_story_success && <CreatePost open={openModalPost} user={RX_SIGN_IN.payload} />}
                 {gate.openModalPost && <PostModal open={openModalPost} user={RX_SIGN_IN.payload} />}
                 <PostList />
+                <MessageContainer />
+
+
             </>
         );
     }

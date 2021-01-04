@@ -6,13 +6,15 @@ import Divider from '../../Divider/Divider';
 import CommentList from '../Comments/CommentList';
 import Reaction from '../Reactions/Reaction';
 import ReactionForm from '../Reactions/ReactionForm';
-
 const dividerStyle = { width: '95%', margin: '5px auto', borderTopColor: 'rgb(228, 230, 235)', borderWidth: '2px' };
 
 
 
 
 export default function PostFooter({ like, addLike, reactions, showReaction, comments, openComment, setOpenComment, setShowReaction, onLike, id }) {
+
+
+
     return (
         <div className="post_footer">
 
@@ -32,7 +34,7 @@ export default function PostFooter({ like, addLike, reactions, showReaction, com
                 </button>
 
                 <button onClick={e => { setOpenComment(!openComment); }}>
-                    <span className="icon"  ><VscComment size={22} fill={"rgb(96, 98, 102)"} /></span>
+                    <span className="icon" ><VscComment size={22} fill={"rgb(96, 98, 102)"} /></span>
                     <span className="text">Comment</span>
                 </button>
 
@@ -44,7 +46,7 @@ export default function PostFooter({ like, addLike, reactions, showReaction, com
 
             { openComment && <>
                 <Divider style={dividerStyle} />
-                <CommentList postID={id} comments={comments}></CommentList>
+                <CommentList postID={id} comments={comments} />
             </>}
 
         </div>

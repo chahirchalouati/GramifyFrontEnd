@@ -1,10 +1,11 @@
 import React from 'react'
+import Reply from './Reply'
 
-function ReplyList() {
+function ReplyList({ replies }) {
+
+    const rps = replies.map(r => <Reply key={r.id} reply={r} />)
     return (
-        <div>
-            
-        </div>
+        <div className='reply_list'>{rps}</div>
     )
 }
 

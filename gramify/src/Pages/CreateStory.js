@@ -12,7 +12,6 @@ import { stories } from "../Services/RequestServices";
 function CreateStory() {
 
     const [story, setStory] = useState({ content: '', file: '', imageUrl: 'http://localhost:8080/files/Valerie/5ea91edb-7166-42cf-a35c-bea77998f269.jpg' });
-
     const [textEditor, seTextEditor] = useState(false);
     const [preview, setPreview] = useState(false);
 

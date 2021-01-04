@@ -26,9 +26,9 @@ function PostList() {
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
 
         if (scrollTop + window.innerHeight + 100 >= scrollHeight) {
-            setIsBottom(true);
+            setIsBottom(isBottom => true);
         } else {
-            setIsBottom(false);
+            setIsBottom(isBottom => false);
         }
     }
 
@@ -38,8 +38,8 @@ function PostList() {
     }, []);
 
 
-    useEffect(() => { 
-      
+    useEffect(() => {
+
 
         if (isBottom) {
             RX_POST.nextPage !== false && dispatch(posts.getNewPost(RX_POST.nextPage));
