@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import MessageUserDetailsBox from './MessageUserDetailsBox';
 
 function MessageUserBox({ user }) {
 
@@ -8,9 +9,12 @@ function MessageUserBox({ user }) {
 
 
     return (
+
+
+
         <div className="message_user_profile"
-            onMouseOverCapture={e => setShowUserDetailsBox((ShowUserDetailsBox) => true)}
-            onMouseOutCapture={e => setShowUserDetailsBox((ShowUserDetailsBox) => false)}
+            onMouseOver={e => setShowUserDetailsBox((ShowUserDetailsBox) => true)}
+            onMouseOut={e => setShowUserDetailsBox((ShowUserDetailsBox) => false)}
         >
 
             <div className="image_icons">
@@ -19,8 +23,7 @@ function MessageUserBox({ user }) {
             </div>
 
             <div className="username">{user.fullName}</div>
-
-            { ShowUserDetailsBox && <div className="userDetailsBox"></div>}
+            <MessageUserDetailsBox user={user} show={ShowUserDetailsBox} />
 
         </div>
     )

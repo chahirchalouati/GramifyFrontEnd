@@ -17,7 +17,7 @@ export default function ProfileDrop({ user, ...props }) {
                 <img
                     className="sm-avatar"
                     style={{ width: "60px", height: "60px" }}
-                    src={process.env.REACT_APP_API_URL + user.profile.avatarFile.url}
+                    src={process.env.REACT_APP_API_URL + user.profile.avatarFileResized.url}
                     alt={user.profile.avatarFile.url} />
 
                 <div className="name-user-profile-drop">

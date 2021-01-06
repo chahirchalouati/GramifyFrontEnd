@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RiSettings5Fill } from 'react-icons/ri'
 import { useSelector } from 'react-redux'
 import history from '../../../../Routes/History'
@@ -6,7 +6,14 @@ import Divider from '../../../Divider/Divider'
 
 function SideBarStory({ textEditor, setContent, submit, setImageUrl }) {
 
- const { RX_SIGN_IN: { payload }, RX_STORY: { assets } } = useSelector(state => state);
+    const { RX_SIGN_IN: { payload }, RX_STORY } = useSelector(state => state);
+
+
+    useEffect(() => {
+        RX_STORY.create_story_success && history.push("/home");
+    }, [RX_STORY.create_story_success])
+
+
     return (
         <div className='side_bar_story'>
             <div className="side_bar_story_header">
@@ -16,7 +23,7 @@ function SideBarStory({ textEditor, setContent, submit, setImageUrl }) {
                     <div className="icon_nav"><RiSettings5Fill size={25}></RiSettings5Fill></div>
                 </div>
                 <div className="profile_side">
-                    <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFile.url} alt={payload.user.profile.avatarFile.url} />
+                    <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFileResized.url} alt={payload.user.profile.avatarFileResized.url} />
                     <span>{payload.user.fullName}</span>
 
                 </div>
@@ -37,7 +44,7 @@ function SideBarStory({ textEditor, setContent, submit, setImageUrl }) {
                     <h4 style={{ margin: '10px 0 10px 0' }}>Backgrounds</h4>
                     <div className="image_model">
                         {
-                            assets.map(a => <div key={a.id} className="image_model_item " onClick={e => setImageUrl(a.url)}>
+                            RX_STORY.assets.map(a => <div key={a.id} className="image_model_item " onClick={e => setImageUrl(a.url)}>
                                 <img src={process.env.REACT_APP_API_URL + a.url} alt={a.name} />
                             </div>)
                         }
@@ -50,7 +57,7 @@ function SideBarStory({ textEditor, setContent, submit, setImageUrl }) {
 
             <div className="form_box">
                 <button className='btn_side' onClick={e => history.push("/home")} >Discard</button>
-                <button className='btn_side' onClick={e => submit()}>Create</button>
+                {!RX_STORY.create_story_start ? <button className='btn_side' onClick={e => submit()}>Create</button> : <button className='btn_side'>Posting ...</button>}
 
             </div>
         </div>

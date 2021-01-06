@@ -6,7 +6,7 @@ export default function AddStory() {
     const { RX_SIGN_IN: { payload } } = useSelector(state => state)
     return (
         <div className='add_story' onClick={e => history.push('/create/story')}>
-            <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFile.url} alt="" />
+            <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFileResized.url} alt="" />
 
             <div className="btn_add"
                 style={{ border: '0.3em solid white', borderRadius: '50%', background: 'white' }} >

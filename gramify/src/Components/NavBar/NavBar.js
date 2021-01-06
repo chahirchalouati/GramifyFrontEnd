@@ -9,19 +9,24 @@ const NavBar = () => {
 
   const { RX_SIGN_IN: { payload } } = useSelector(state => state)
 
-
+  const [fillsIcon, setfillsIcon] = useState({
+    video: false,
+    live: false,
+    shows: false,
+    registred: false,
+  })
 
   return (<nav className='nav_bar'>
     <div className="logo" onClick={e => history.push('/home')}>Gramify</div>
     <div className="navigation">
       <TiHome style={{ fill: 'rgb(23, 113, 230)' }} size='30' onClick={e => history.push('/home')} ></TiHome>
       <FaUserFriends size='30'></FaUserFriends>
-      <MdOndemandVideo size='30'></MdOndemandVideo>
+      <MdOndemandVideo size='30' onClick={e => history.push("/videos")}></MdOndemandVideo>
       <HiUserGroup size='30'></HiUserGroup>
     </div>
     <div className="profile_user">
       <div className="box_profile_nav">
-        <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFile.url} alt="" />
+        <img src={process.env.REACT_APP_API_URL + payload.user.profile.avatarFileResized.url} alt="" />
         <div className="username_nav">{payload.user.userName}</div>
       </div>
       <div className="icon_nav"><BiPlus></BiPlus></div>

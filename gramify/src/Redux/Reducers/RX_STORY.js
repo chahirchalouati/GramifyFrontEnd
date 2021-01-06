@@ -33,10 +33,11 @@ const RX_STORY = (state = initialState, { type, payload }) => {
         error_message: {},
       };
     case STORY_TYPES.CREATE_STORY_SUCCESS:
-      state.stories.content.unshift(payload);
+
       if (state.stories.content.length > 5) {
         state.stories.content.pop();
       }
+      state.stories.content.unshift(payload);
 
       return {
         ...state,
@@ -44,6 +45,7 @@ const RX_STORY = (state = initialState, { type, payload }) => {
         create_story_success: true,
         create_story_failed: false,
         error_message: {},
+
       };
     case STORY_TYPES.CREATE_STORY_FAILED:
       return {
@@ -62,6 +64,7 @@ const RX_STORY = (state = initialState, { type, payload }) => {
         get_story_success: false,
         get_story_failed: false,
         error_message: {},
+        create_story_success: false,
       };
     case STORY_TYPES.GET_STORY_SUCCESS:
       return {

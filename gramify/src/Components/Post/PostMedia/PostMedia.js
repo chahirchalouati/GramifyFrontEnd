@@ -1,4 +1,5 @@
 import React from 'react'
+import Video from './Video';
 
 function PostMedia({ files }) {
     if (files) {
@@ -7,7 +8,7 @@ function PostMedia({ files }) {
                 if (p.fileType.type.startsWith("image")) {
                     return <img key={p.id} src={process.env.REACT_APP_API_URL + p.url} alt={p.name} />;
                 } else if (p.fileType.type.startsWith("video")) {
-                    return <video key={p.id} src={process.env.REACT_APP_API_URL + p.url} controls></video>
+                    return <Video key={p.id} src={process.env.REACT_APP_API_URL + p.url} />
                 }
                 return true
             }

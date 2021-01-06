@@ -38,7 +38,7 @@ export default function AddReply({ id }) {
     return (
         <form className='comment_form' style={{ marginTop: '5px', width: '95%', marginLeft: 'auto' }}>
             <div className="profile_user" style={{ width: '2em', height: '2em' }}>
-                <img style={{ width: '2em', height: '2em' }} src={process.env.REACT_APP_API_URL + user.profile.avatarFile.url} alt={user.profile.avatarFile.name} />
+                <img style={{ width: '2em', height: '2em' }} src={process.env.REACT_APP_API_URL + user.profile.avatarFileResized.url} alt={user.profile.avatarFile.name} />
             </div>
 
             <span data-placeholder="make a reply ..." className='span_textArea'

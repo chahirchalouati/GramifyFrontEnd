@@ -11,11 +11,7 @@ const persistConfig = {
   storage: storage,
   whitelist: [
     "RX_SIGN_IN",
-    "RX_SIGN_UP",
-    "RX_POST",
-    "RX_COMMENT",
-    "RX_ACCESS_TYPE",
-    "RX_STORY"], // which reducer want to store
+  ], // which reducer want to store
   transforms: [
     encryptTransform({
       secretKey:

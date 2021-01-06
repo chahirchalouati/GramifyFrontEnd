@@ -9,6 +9,7 @@ import { store } from "../Redux";
 import history from "../Routes/History";
 import Profile from "./Profile";
 import CreateStory from "./CreateStory";
+import Videos from "./Videos";
 
 
 
@@ -20,7 +21,8 @@ const App = (props) => {
                     <Route exact path="/" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
                     <PrivateRoute exact path="/home" component={Home}></PrivateRoute>
-                    <PrivateRoute exact path="/profile" component={Profile}></PrivateRoute>
+                    <PrivateRoute exact path="/profile" component={Profile}></PrivateRoute> 
+                    <PrivateRoute exact path="/videos" component={Videos}></PrivateRoute>
                     <PrivateRoute exact path="/create/story" component={CreateStory}></PrivateRoute>
             
                     <Route path="*" component={ErrorPage} />

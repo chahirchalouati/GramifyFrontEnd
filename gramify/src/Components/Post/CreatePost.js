@@ -8,7 +8,7 @@ function CreatePost({ user, open }) {
     return (
         <div className='post_creator'>
             <div className="post_creator_header">
-                <img src={process.env.REACT_APP_API_URL + userProfile.profile.avatarFile.url} alt="" />
+                <img src={process.env.REACT_APP_API_URL + userProfile.profile.avatarFileResized.url} alt="" />
                 <div className='post_creator_placeholder' onClick={(e) => { open() }} style={{ cursor: 'pointer' }}>What's in your mind?{userProfile.userName}</div>
             </div>
             <Divider style={{ width: '100%', margin: '10px auto', borderTopColor: 'rgb(228, 230, 235)' }}></Divider>

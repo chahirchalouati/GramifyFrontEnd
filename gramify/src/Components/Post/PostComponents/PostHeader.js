@@ -11,7 +11,7 @@ export default function PostHeader({ user, createdAt }) {
         return (
             <div className="post_header">
                 <div className="post_profile_box">
-                    <img src={process.env.REACT_APP_API_URL + user.profile.avatarFile.url} alt="" />
+                    <img src={process.env.REACT_APP_API_URL + user.profile.avatarFileResized.url} alt="" />
                     <div className="user_info">
                         <div className="username">{user.fullName}</div>
                         <div className="createdAt">

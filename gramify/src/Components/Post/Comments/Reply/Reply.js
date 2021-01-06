@@ -5,7 +5,7 @@ function Reply({ reply }) {
     return (
         <div className='reply'>
             <div className="reply_header">
-                <img src={process.env.REACT_APP_API_URL + reply.user.profile.avatarFile.url} alt={reply.user.profile.avatarFile.name} />
+                <img src={process.env.REACT_APP_API_URL + reply.user.profile.avatarFileResized.url} alt={reply.user.profile.avatarFileResized.name} />
                 <div className="reply_content">
                     <div className="reply_user_name">{reply.user.fullName} </div>
                     <p className="content_reply">{reply.content}</p>

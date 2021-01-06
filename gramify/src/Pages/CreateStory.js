@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, } from "react-redux";
 import NavBar from "../Components/NavBar/NavBar";
 import StoryMedia from "../Components/Stories/StoryActions/AddStoryMedia/StoryMedia";
 import StoryTextContent from "../Components/Stories/StoryActions/AddStoryTextContent/StoryTextContent";
 import Preview from "../Components/Stories/StoryActions/Preview/Preview";
 import SideBarStory from "../Components/Stories/StoryActions/SideBarStory/SideBarStory";
-import history from "../Routes/History";
 import { stories } from "../Services/RequestServices";
 
 
@@ -29,11 +28,6 @@ function CreateStory() {
         setStory({ ...story, content: text })
     }
 
-
-
-
-
-
     const onSubmit = () => {
 
         var formData = new FormData();
@@ -41,13 +35,13 @@ function CreateStory() {
         if (story.file) {
             formData.append("file", story.file);
             dispatch(stories.post(formData))
-            history.push("/home");
+
         }
         if (story.content != null || undefined) {
             formData.append('content', story.content);
             formData.append('imageUrl', story.imageUrl)
             dispatch(stories.post(formData));
-            history.push("/home");
+
         }
 
 

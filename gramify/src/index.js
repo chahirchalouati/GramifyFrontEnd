@@ -5,8 +5,8 @@ import App from "./Pages/App";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  <App />
+  ,
   document.getElementById("root")
 );
